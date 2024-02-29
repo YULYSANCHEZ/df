@@ -1,0 +1,261 @@
+#Custom song
+# "OPPOSITE" by Sabrina Carpenter
+# Sonic Pi version
+
+anything = "C:/Users/yuly_sanchez/Documents/Audacity/Sabrina Carpenter - opposite (Official Audio) -1.wav"
+
+
+ending = "C:/Users/yuly_sanchez/Documents/Audacity/Yay.wav"
+
+
+
+
+use_bpm 120
+use_synth :bass_foundation
+
+
+
+define :rere_Notes do
+  sample :drum_bass_hard
+  sleep 0.5
+  play :e4, release: 0.3
+  sleep 0.5
+  play :g4, release: 0.3
+  sleep 0.5
+  play :b4, release: 0.3
+  sleep 0.5
+end
+
+define :wee_note do
+  sample :drum_cymbal_closed
+  sleep 0.25
+  play :c5, release: 0.3
+  sleep 0.25
+  play :b4, release: 0.3
+  sleep 0.25
+  play :a4, release: 0.3
+  sleep 0.25
+end
+
+
+
+define :yuyu_note do
+  sample :drum_snare_hard
+  sleep 0.5
+  play :a4, release: 0.3
+  sleep 0.5
+  play :g4, release: 0.3
+  sleep 0.5
+  play :e4, release: 0.3
+  sleep 0.5
+end
+
+define :lala_note do
+  play :c4
+  sleep 0.25
+  play :e4
+  sleep 0.25
+  play :f4
+  sleep 0.25
+  play :g4
+  sleep 1.5
+  play :f4
+  sleep 0.25
+  play :e4
+  sleep 0.25
+  play :f4
+  sleep 0.25
+  play :g4
+  sleep 0.25
+  play :f4
+  sleep 0.25
+  play :e4
+  sleep 0.25
+  play :f4
+  sleep 0.25
+end
+
+define :coco_note do
+  play :e4
+  sleep 0.5
+  play :d4
+  sleep 0.5
+  play :c4
+  sleep 0.5
+  play :b3
+  sleep 0.5
+  play :a3
+  sleep 0.5
+  play :b3
+  sleep 0.5
+  play :c4
+  sleep 0.5
+  play :d4
+  sleep 0.5
+end
+
+
+sample anything
+sleep 40
+
+yuyu_note
+
+rere_Notes
+
+wee_note
+coco_note
+
+# Verse 1
+
+
+live_loop :verse do
+  6.times do
+    rere_Notes
+  end
+  stop
+end
+sleep 6
+
+# Chorus
+live_loop :chorus do
+  8.times do
+    yuyu_note
+  end
+  stop
+end
+sleep 8
+
+# Post-Chorus
+live_loop :post_chorus do
+  10.times do
+    wee_note
+  end
+  stop
+end
+sleep 8
+
+# Outro
+live_loop :outro do
+  with_fx :eq, room: 0.6 do
+    3.times do
+      
+      sample :drum_tom_lo_soft
+      sleep 0.5
+      play :g4, release: 0.6, amp: 8
+      sleep 0.5
+      play :e4, release: 0.4, amp: 4
+      sleep 0.5
+      play :c4, release: 0.2, amp: 1
+      sleep 0.5
+    end
+    stop
+  end
+end
+sleep 6
+
+play 60
+sleep 1
+
+live_loop :yay do
+  4.times do
+    lala_note
+  end
+  stop
+end
+sleep 1
+
+
+#START AGAIN
+
+
+
+live_loop :verse do
+  7.times do
+    rere_Notes
+  end
+  stop
+end
+sleep 5
+
+live_loop :post_chorus do
+  3.times do
+    wee_note
+  end
+  stop
+end
+sleep 3
+
+
+live_loop :verse do
+  6.times do
+    rere_Notes
+  end
+  stop
+end
+sleep 6
+
+live_loop :chorus do
+  6.times do
+    yuyu_note
+  end
+  stop
+end
+sleep 8
+
+live_loop :post_chorus do
+  10.times do
+    wee_note
+  end
+  stop
+end
+sleep 6
+
+live_loop :yay do
+  2.times do
+    lala_note
+  end
+  stop
+end
+sleep 8
+
+live_loop :nonsense do
+  8.times do
+    with_fx :band_eq, room: 0.6 do
+      
+      coco_note
+    end
+    stop
+  end
+end
+
+
+
+live_loop :verse do
+  7.times do
+    rere_Notes
+  end
+  stop
+end
+sleep 5
+
+live_loop :post_chorus do
+  3.times do
+    wee_note
+  end
+  stop
+end
+sleep 3
+
+live_loop :nonsense do
+  8.times do
+    with_fx :band_eq, room: 0.6 do
+      
+      
+    end
+    stop
+  end
+end
+
+sleep 5
+
+sample ending
